@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="../style.css">
+	<title>Pocong Underground</title>
+	<div class="kepala" style="background-image: url('pu-header.jpg')">
+		<div class="info">
+			<h1>Pocong Underground</h1>
+			<p id="description"></p>
+			<ul class="ulil-amri">
+				<li><button onClick="terjemah(0)">ID</button></li>
+				<li><button onClick="terjemah(1)">EN</button></li>
+			</ul>
+		</div>
+		<img src="../game_icon/icon_pocong.png" class="icon-header">
+	</div>
+</head>
+<body>
+	<div class="navigasi">
+		<a href="../index.html"><button class="btn-navigasi" id="home">BERANDA</button></a>
+		<button class="btn-navigasi" id="info" onClick="opsi_pilih(0)">INFO</button>
+		<button class="btn-navigasi" id="download" onClick="opsi_pilih(1)">UNDUH</button>
+		<button class="btn-navigasi" id="screenshot" onClick="opsi_pilih(2)">TANGKAPAN LAYAR</button>
+	</div>
+	<div class="isi" id="isi"></div>
+</body>
+<footer>
+	<p>
+		Takuni Inifnity (C) 2018-2023 <a href="https://facebook.com/thafa.fauzanli.1">Thafa Fauzanli</a>
+	</p>
+</footer>
+<script>
+	var opsip = 0;
+	var opsi;
+	var bahasa = 1;
+	
+	const teks = [
+		// ID
+		{
+			deskripsi: 'Terjebak di ruangan bawah tanah yang dipenuhi hantu pocong',
+			beranda: 'BERANDA',
+			info: 'INFO',
+			unduh: 'UNDUH',
+			tlayar: 'TANGKAPAN LAYAR',
+			info_isi: 'Pocong Underground adalah game horror sudut pandang orang pertama yang mana player terjebak disebuah ruangan bawah tanah bersama para hantu pocong, tujuan dari game ini adalah berusaha menghindari hantu-hantu dan mencari jalan keluar.<h3>KONTROL</h3><p>PC = Gerakan(W=Maju, A=Kiri, S=Mundur, D=Kanan), Interaksi(Mouse Kiri), Kembali(Esc)</p>',
+			versi: 'versi',
+			cara_unduh: 'silahkan pilih sesuai dengan sistem operasi dan arsitektur yang digunakan'
+		},
+		// EN
+		{
+			deskripsi: 'Trapped in a basement filled with pocong ghosts',
+			beranda: 'HOME',
+			info: 'INFO',
+			unduh: 'DOWNLOAD',
+			tlayar: 'SCREENSHOT',
+			info_isi: 'Pocong Underground is a first-person horror game where players are trapped in an underground room with pocong ghosts, the goal of this game is to try to avoid the ghosts and find a way out.<h3>CONTROL</h3><p>PC = Movement(W=Foward, A=Left, S=Backward, D=Right), Interact(Mouse Left), Back(Esc)</p>',
+			versi: 'version',
+			cara_unduh: 'Please choose according to the operating system and architecture used'
+		}
+	];
+	
+	function info_html() {
+		var x = '<h2>__.::'+teks[bahasa].info+'::.__</h2>'+teks[bahasa].info_isi;
+		return x;
+	}
+	
+	const unduh = {
+		'0.9': { // VERSI 0.9 (BETA)
+			windows: {
+				x86: '#',
+				x86_64: '#'
+			},
+			linux: {
+				x86: '#',
+				x86_64: '#'
+			},
+			android: {
+				arm: '#',
+				arm_64: '#',
+				x86: '#',
+				x86_64: '#'
+			}
+		}
+	}
+	function unduh_html() {
+		var x = '<h2>__.::'+teks[bahasa].unduh+'::.__</h2>';
+		x += '<p>'+teks[bahasa].cara_unduh+'</p>';
+		x += '<table class="tabel"><tr><th>'+teks[bahasa].versi+'</th><th>windows</th><th>linux</th><th>android</th></tr>';
+		for (var y in unduh) { // VERSI
+			x += '<tr>';
+			x += '<td>'+y+'</td>';
+			for (var z in unduh[y]) { // OS
+				x += '<td>';
+				for (var i in unduh[y][z]) { // ARSITEKTUR
+					x += '<a href="'+unduh[y][z][i]+'">'+i+'</a><br>';
+				}
+				x += '</td>';
+			}
+			x += '</tr>';
+		}
+		x += '</table>';
+		return x;
+	}
+	
+	function tlayar_html() {
+		var x = '<h2>__.::'+teks[bahasa].tlayar+'::.__</h2>';
+		return x;
+	}
+	
+	function terjemah(x) {
+		bahasa = x;
+		document.getElementById('description').innerHTML = teks[bahasa].deskripsi;
+		document.getElementById('home').innerHTML = teks[bahasa].beranda;
+		document.getElementById('info').innerHTML = teks[bahasa].info;
+		document.getElementById('download').innerHTML = teks[bahasa].unduh;
+		document.getElementById('screenshot').innerHTML = teks[bahasa].tlayar;
+		opsi = [
+			info_html(),
+			unduh_html(),
+			tlayar_html()
+		];
+		opsi_pilih(opsip);
+	}
+	
+	function opsi_pilih(x) {
+		opsip = x;
+		document.getElementById('isi').innerHTML = opsi[opsip];
+	}
+	
+	terjemah(bahasa);
+</script>
+</html>
