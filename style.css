@@ -1,0 +1,122 @@
+html {
+	background-color: black;
+	color: white;
+	display: block;
+}
+button {
+	color: #FC7272;
+	border: solid #5BCA98;
+	border-radius: 5px;
+	background-color: transparent;
+	margin: 5px;
+}
+a:link {
+	color: #5BCA98;
+	text-decoration: none;
+}
+a:visited {
+	color: #5BCA98;
+	text-decoration: none;
+}
+a:hover {
+	color: #FC7272;
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+.kepala {
+	background-position: center bottom;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.info {
+	padding: 5%;
+	padding-top: 100px;
+}
+
+.ulil-amri {
+	display: flex;
+}
+
+.ulil-amri, li {
+	list-style-type: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	align-items: center;
+}
+
+.logo {
+	width: 50%;
+	height: 50%;
+	padding-right: 50px;
+	padding-top: 100px;
+}
+
+.icon-header {
+	width: 25%;
+	height: 25%;
+	margin-right: 50px;
+	margin-top: 100px;
+	border-radius: 50%;
+}
+
+.icon {
+	border-radius: 50%;
+	border: solid white;
+}
+
+.thumb {
+	width: 128px;
+	height: 128px;
+}
+
+.navigasi {
+	text-align: center;
+	background: linear-gradient(to right, black, #F70700, #4DF100, black);
+}
+
+.btn-navigasi {
+	color: white;
+	border: solid white;
+	border-radius: 5px;
+	background-color: transparent;
+	margin: 5px;
+	font-size: 24px;
+}
+
+.isi {
+	padding: 5px;
+	border-radius: 15px;
+	text-align: center;
+	background: linear-gradient(to right, #880300, black, black, black, black, #2B8800);
+	justify-content: center;
+}
+
+.item-container {
+	display: flex;
+	justify-content: center;
+}
+
+.item {
+	border-radius: 15px;
+	border: solid white;
+	width: 166px;
+	height: 176px;
+	padding: 5px;
+	margin: 5px;
+}
+
+table, td, th {
+	margin: auto;
+	border-collapse: collapse;
+	border: solid white;
+	padding: 10px;
+}
+footer {
+	border-top: solid white;
+	background: linear-gradient(to bottom, grey, black);
+	text-align: center;
+}
