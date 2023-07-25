@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<title>Takuni Infinity</title>
+	<div class="kepala" style="background-image: url('ti-header.jpg')">
+		<div class="info">
+			<h1>Takuni Infinity</h1>
+			<p id="description"></p>
+			<ul class="ulil-amri">
+				<li><a href="https://facebook.com/profile.php/?id=100083579740025">Facebook</a></li>
+				<li><a href="https://youtube.com/c/takuniinfinity">Youtube</a></li>
+				<li><a href="https://takuniinifnity.itch.io">Itch.io</a></li>
+				<li><button onClick="terjemah(0)">ID</button></li>
+				<li><button onClick="terjemah(1)">EN</button></li>
+			</ul>
+		</div>
+		<img src="logo.png" class="logo"/>
+	</div>
+</head>
+<body>
+	<div class="navigasi">
+		<button class="btn-navigasi" onClick="opsi_pilih(0)" id="history">SEJARAH</button>
+		<button class="btn-navigasi" onClick="opsi_pilih(1)" id="app">APLIKASI</button>
+		<button class="btn-navigasi" onClick="opsi_pilih(2)" id="game">PERMAINAN</button>
+	</div>
+	<div class="isi" id="isi">
+		
+	</div>
+</body>
+<footer>
+	<p>
+		Takuni Inifnity (C) 2018-2023 <a href="https://facebook.com/thafa.fauzanli.1">Thafa Fauzanli</a>
+	</p>
+</footer>
+<script>
+	var opsip = 0;
+	var opsi;
+	var bahasa = 1;
+	const teks = [
+		// ID
+		{
+			sejarah: '<h2>__.:: SEJARAH ::.__</h2><p><h3>NAMA</h3>Takuni Infinity berasal dari channel youtube ANIMASIN yang berubah nama. Channel ANIMASIN hanya membuat video animasi, lalu diubah menjadi Takuni Infinity supaya kesan-nya lebih umum tidak seperti ANIMASIN yang terikat dengan animasi saja.</p>'+
+			'<p>Alasan pengubahan nama karena sudah lebih fokus di pembuatan game, dan dalam game itu ada animasi, musik, video, cerita, gambar, model 3d, coding, dll maka lebih tepat nama nya diubah menjadi Takuni Infinity. Nama ini berasal dari 2 kata yaitu Takuni dan Infinity, (Takuni) sendiri diambil dari sebuah kata dari bahasa Banjar yang berarti (Tanyai) dan Infinity diambil dari bahasa Inggris yang berarti (Tanpa batas), makna keseluruhan nya ialah (tanyai tanpa batas).</p>'+
+			'<p><h3>LOGO</h3><img src="sejarah/logo_awal.png" class="thumb"><br>Logo awal<br><img src="sejarah/logo_2.png" class="thumb"><br>Logo kedua<br><img src="logo.png" class="thumb"><br>Logo ketiga (sekarang)</p>',
+			aplikasi: 'APLIKASI',
+			history: 'SEJARAH',
+			permainan: 'PERMAINAN',
+			no_app: 'belum ada aplikasi',
+			no_game: 'belum ada permainan',
+			deskripsi: 'Berusaha membuat karya-karya digital dalam bentuk game, aplikasi, animasi, musik dll. Memadukan teknologi dan seni untuk menciptakan karya yang memukau. Selamat menikmati'
+		},
+		// EN
+		{
+			sejarah: '<h2>__.:: HISTORY ::.__</h2><p><h3>NAME</h3>Takuni Infinity comes from the ANIMASIN youtube channel which changed its name. The ANIMASIN channel only makes animated videos, then changes it to Takuni Infinity so that the impression is more general unlike ANIMASIN which is tied to animation only.</p>'+
+			'<p>The reason for changing the name is because it has focused more on making games, and in the game there are animations, music, videos, stories, images, 3d models, coding, etc. so it is more appropriate to change the name to Takuni Infinity. This name comes from 2 words, namely Takuni and Infinity, (Takuni) itself is taken from a word from Banjar language which means (Ask) and Infinity is taken from English which means (No limit), the overall meaning is (Ask without limit).</p>'+
+			'<p><h3>LOGO</h3><img src="sejarah/logo_awal.png" class="thumb"><br>1st logo<br><img src="sejarah/logo_2.png" class="thumb"><br>2nd logo<br><img src="logo.png" class="thumb"><br>3rd logo (current)</p>',
+			aplikasi: 'APPLICATION',
+			history: 'HISTORY',
+			permainan: 'GAME',
+			no_app: 'no application yet',
+			no_game: 'no game yet',
+			deskripsi: 'Strives to create digital works in the form of games, applications, animations, music, etc. Blending technology and art to create stunning masterpieces. Enjoy'
+		},
+	];
+	
+	function terjemah(x) {
+		bahasa = x;
+		document.getElementById('description').innerHTML = teks[bahasa].deskripsi;
+		document.getElementById('history').innerHTML = teks[bahasa].history;
+		document.getElementById('app').innerHTML = teks[bahasa].aplikasi;
+		document.getElementById('game').innerHTML = teks[bahasa].permainan;
+		opsi = [
+			teks[bahasa].sejarah,
+			'<h2>__.:: '+teks[bahasa].aplikasi+' ::.__</h2>'+app_html(),
+			'<h2>__.:: '+teks[bahasa].permainan+' ::.__</h2>'+game_html()
+		];
+		opsi_pilih(opsip);
+	}
+	
+	const game = [
+		{
+			nama: 'Pocong Underground',
+			gambar: 'icon_pocong.png',
+			url: 'game/pocong_underground.html'
+		}
+	];
+	function game_html() {
+		if (game.length == 0) { return teks[bahasa].no_game; }
+		var x = '<div class="item-container">';
+		for (var y=0;  y < game.length; y++) {
+			x += '<a class="item" href="'+game[y].url+'"><img src="game_icon/'+game[y].gambar+'" class="icon">'+game[y].nama+'</a>';
+		}
+		x += '</div>';
+		return x;
+	}
+	
+	const app = [];
+	function app_html() {
+		if (app.length==0) { return teks[bahasa].no_app; }
+		var x = '<div class="item-container">';
+		for (var y=0;  y < app.length; y++) {
+			x += '<a class="item" href="'+app[y].url+'"><img src="app_icon/'+app[y].gambar+'" class="icon">'+app[y].nama+'</a>';
+		}
+		x += '</div>';
+		return x;
+	}
+	
+	
+	function opsi_pilih(x) {
+		opsip = x;
+		document.getElementById('isi').innerHTML = opsi[x];
+	}
+	
+	terjemah(bahasa);
+</script>
+</html>
